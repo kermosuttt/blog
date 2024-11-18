@@ -23,7 +23,7 @@ class Post extends Model
         });
     }
 
-    
+
     public function imageFile(): Attribute {
         return Attribute::get(function() {
             if(parse_url($this->original['image'], PHP_URL_SCHEME) !== null){
@@ -46,5 +46,9 @@ class Post extends Model
         static::deleting(function ($post){
             Storage::disk('public')->delete($post->imageFile);
         });
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }
