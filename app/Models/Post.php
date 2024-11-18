@@ -42,6 +42,16 @@ class Post extends Model
             }
         });
     }
+
+    public function authHasLiked(): Attribute {
+        return Attribute::get(function() {
+            if(!auth()->user()){
+                return false;
+            }
+            return auth()->user()->likes()->where('post_id', $this->id)->exists();
+        });
+    }
+
     protected static function booted(): void {
         static::deleting(function ($post){
             Storage::disk('public')->delete($post->imageFile);
