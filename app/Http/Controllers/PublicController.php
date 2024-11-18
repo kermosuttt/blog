@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Like;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 class PublicController extends Controller
 {
     public function index(){
@@ -18,22 +22,23 @@ class PublicController extends Controller
     }
 
     public function like(Post $post){
-        $like = auth()->user()->likes()->where('post_id', $post->id)->first();
-        if($like){
-         $like->delete();
-        } else {
-         $like = new Like();
-         $like->user()->associate(auth()->user());
-         $like->post()->associate($post);
-         $like->save();
-        }
-        return redirect()->back();
-     }
+       $like = auth()->user()->likes()->where('post_id', $post->id)->first();
+       if($like){
+        $like->delete();
+       } else {
+        $like = new Like();
+        $like->user()->associate(auth()->user());
+        $like->post()->associate($post);
+        $like->save();
+       }
+       return redirect()->back();
+    }
 
-     public function user(User $user){
+    public function user(User $user){
         $posts = $user->posts()->withCount('comments', 'likes')->latest()->simplePaginate(16);
         return view('user', compact('posts', 'user'));
     }
+
     public function follow(User $user){
         $followee = auth()->user()->followees()->where('followee_id', $user->id)->first();
         if($followee){
@@ -44,4 +49,17 @@ class PublicController extends Controller
         return redirect()->back();
      }
 
+    public function comment(Post $post, Request $request){
+        $comment = new Comment();
+        $comment->body = $request->input('body');
+        $comment->post()->associate($post);
+        $comment->user()->associate(auth()->user());
+        $comment->save();
+        return redirect()->back();
+    }
+
+    public function category(Category $category){
+        $posts = $category->posts()->withCount('comments', 'likes')->latest()->simplePaginate(16);
+        return view('welcome', compact('posts'));
+    }
 }
