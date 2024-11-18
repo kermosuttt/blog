@@ -31,8 +31,8 @@ class PostController extends Controller
     public function store(StorePostRequest $request)
     {
         $post = new Post($request->validated());
-        dd($request->file('image')->store(public_path('')));
-        $post->image = '/storage/' . $imageName;
+        $file = $request->file('image')->store('', ['disk' => 'public']);
+        $post->image = Storage::url($file);
         // $post->title = $request->input('title');
         // $post->body = $request->input('body');
         $post->save();
