@@ -21,7 +21,7 @@
                 <li><a>Item 3</a></li>
             </ul>
         </div>
-        <a class="btn btn-ghost text-xl">daisyUI</a>
+        <a href="{{route('home')}}" class="btn btn-ghost text-xl">{{ config('app.name') }}</a>
     </div>
     <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
