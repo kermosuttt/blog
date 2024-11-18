@@ -16,7 +16,7 @@ class PublicController extends Controller
     public function post(Post $post){
         return view('post', compact('post'));
     }
-    
+
     public function like(Post $post){
         $like = auth()->user()->likes()->where('post_id', $post->id)->first();
         if($like){
@@ -29,4 +29,19 @@ class PublicController extends Controller
         }
         return redirect()->back();
      }
+
+     public function user(User $user){
+        $posts = $user->posts()->withCount('comments', 'likes')->latest()->simplePaginate(16);
+        return view('user', compact('posts', 'user'));
+    }
+    public function follow(User $user){
+        $followee = auth()->user()->followees()->where('followee_id', $user->id)->first();
+        if($followee){
+            auth()->user()->followees()->detach($user);
+        } else {
+            auth()->user()->followees()->attach($user);
+        }
+        return redirect()->back();
+     }
+
 }
