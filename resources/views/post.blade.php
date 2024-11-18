@@ -8,6 +8,7 @@
             <h2 class="card-title">{{ $post->title }}</h2>
             <p>{{ $post->body }}</p>
             <div class="card-actions justify-end">
+
             </div>
         </div>
     </div>

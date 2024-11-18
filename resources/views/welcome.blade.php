@@ -10,7 +10,8 @@
                     <figure>
                         <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
                             alt="Shoes" />
-@@ -15,11 +15,11 @@
+                    </figure>
+                    <div class="card-body">
                         <h2 class="card-title">{{ $post->title }}</h2>
                         <p>{{ $post->snippet }}</p>
                         <div class="card-actions justify-end">

@@ -5,6 +5,7 @@
         <form method="POST" action="{{ route('password.store') }}">
             @csrf
             <input type="hidden" name="token" value="{{ $request->route('token') }}">
+
             <label class="form-control w-full">
                 <div class="label">
                     <span class="label-text">Email</span>
@@ -39,10 +40,12 @@
                     @enderror
                 </div>
             </label>
+
             <div class="flex items-center justify-end mt-4">
                 <input type="submit" class="btn btn-primary" value="{{ __('Reset Password') }}">
             </div>
         </form>
     </div>
 </div>
+
 @endsection
