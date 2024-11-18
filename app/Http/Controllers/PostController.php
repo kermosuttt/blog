@@ -65,6 +65,7 @@ class PostController extends Controller
         $post->fill($request->validated());
 
         if($request->has('image') && $request->file('image') !== null){
+            Storage::disk('public')->delete($post->imageFile);
             $file = $request->file('image')->store('', ['disk' => 'public']);
             $post->image = $file;
         }
@@ -79,7 +80,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        
+
         $post->delete();
         return redirect()->back();
     }
