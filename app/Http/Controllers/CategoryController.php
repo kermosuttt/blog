@@ -1,8 +1,11 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+
 class CategoryController extends Controller
 {
     /**
@@ -12,6 +15,7 @@ class CategoryController extends Controller
     {
         //
     }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -19,6 +23,7 @@ class CategoryController extends Controller
     {
         //
     }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -26,6 +31,7 @@ class CategoryController extends Controller
     {
         //
     }
+
     /**
      * Display the specified resource.
      */
@@ -33,6 +39,7 @@ class CategoryController extends Controller
     {
         //
     }
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -40,6 +47,7 @@ class CategoryController extends Controller
     {
         //
     }
+
     /**
      * Update the specified resource in storage.
      */
@@ -47,6 +55,7 @@ class CategoryController extends Controller
     {
         //
     }
+
     /**
      * Remove the specified resource from storage.
      */

@@ -1,8 +1,11 @@
 <?php
+
 namespace App\Policies;
+
 use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+
 class CommentPolicy
 {
     /**
@@ -12,6 +15,7 @@ class CommentPolicy
     {
         //
     }
+
     /**
      * Determine whether the user can view the model.
      */
@@ -19,6 +23,7 @@ class CommentPolicy
     {
         //
     }
+
     /**
      * Determine whether the user can create models.
      */
@@ -26,6 +31,7 @@ class CommentPolicy
     {
         //
     }
+
     /**
      * Determine whether the user can update the model.
      */
@@ -33,6 +39,7 @@ class CommentPolicy
     {
         //
     }
+
     /**
      * Determine whether the user can delete the model.
      */
@@ -40,6 +47,7 @@ class CommentPolicy
     {
         //
     }
+
     /**
      * Determine whether the user can restore the model.
      */
@@ -47,6 +55,7 @@ class CommentPolicy
     {
         //
     }
+
     /**
      * Determine whether the user can permanently delete the model.
      */

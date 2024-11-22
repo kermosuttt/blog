@@ -18,7 +18,7 @@ Route::middleware(['auth', 'verified'])->group(function (){
     Route::post('/post/{post}/like', [PublicController::class, 'like'])->name('like');
     Route::post('/user/{user}/follow', [PublicController::class, 'follow'])->name('follow');
     Route::post('/post/{post}/comment', [PublicController::class, 'comment'])->name('comment');
-    
+
     // Route::get('/admin/posts', [PostController::class, 'index'])->name('posts.index');
     // Route::get('/admin/posts/create', [PostController::class, 'create'])->name('posts.create');
     // Route::post('/admin/posts', [PostController::class, 'store'])->name('posts.store');

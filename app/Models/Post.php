@@ -12,6 +12,7 @@ use Spatie\Sluggable\SlugOptions;
 class Post extends Model
 {
     use HasFactory, HasSlug;
+
     /**
      * Get the options for generating the slug.
      */
@@ -21,6 +22,7 @@ class Post extends Model
             ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
     }
+
     /**
      * Get the route key for the model.
      *
@@ -56,6 +58,7 @@ class Post extends Model
             }
         });
     }
+
     public function image(): Attribute {
         return Attribute::get(function() {
             if(parse_url($this->original['image'], PHP_URL_SCHEME) !== null || !$this->original['image']){
@@ -72,6 +75,7 @@ class Post extends Model
                 return false;
             }
             return auth()->user()->likes()->where('post_id', $this->id)->exists();
+
         });
     }
 
@@ -88,13 +92,17 @@ class Post extends Model
     public function comments(){
         return $this->hasMany(Comment::class)->latest();
     }
+
     public function tags(){
         return $this->belongsToMany(Tag::class);
+    }
+
+    public function likes(){
+        return $this->hasMany(Like::class);
     }
 
     public function category(){
         return $this->belongsTo(Category::class);
     }
-
 
 }

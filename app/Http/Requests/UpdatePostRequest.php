@@ -12,7 +12,7 @@ class UpdatePostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        
+
         return $this->route('post')->user->id === auth()->user()->id;
     }
 

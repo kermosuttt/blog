@@ -1,6 +1,9 @@
 <?php
+
 namespace App\Http\Requests;
+
 use Illuminate\Foundation\Http\FormRequest;
+
 class StoreCommentRequest extends FormRequest
 {
     /**
@@ -10,6 +13,7 @@ class StoreCommentRequest extends FormRequest
     {
         return false;
     }
+
     /**
      * Get the validation rules that apply to the request.
      *

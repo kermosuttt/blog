@@ -41,6 +41,7 @@
                 @else
                     <li><a href="{{route('category', ['category' => $category])}}">{{$category->name}}</a></li>
                 @endif
+
             @endforeach
 
 

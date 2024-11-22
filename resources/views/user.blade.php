@@ -50,6 +50,7 @@
                                 </div>
                             @endif
                         </div>
+
                         <p class="text-neutral-content"><a href="{{route('user', ['user' => $post->user])}}">{{ $post->user->name }}</a></p>
                         <p class="text-neutral-content">Comments: {{ $post->comments_count }}</p>
                         <p class="text-neutral-content">Likes: {{ $post->likes_count }}</p>

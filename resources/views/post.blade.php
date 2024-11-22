@@ -48,27 +48,27 @@
             </form>
         </div>
     </div>
-    
+
     @foreach($post->comments as $comment)
-    <div class="card bg-base-200 shadow-xl min-h-full mb-2">
-        <div class="card-body ">
-        <p>{{ $comment->body }}</p>
-        <div class="flex flex-row">
-            <div class="basis-1/2">
-                <div class="tooltip w-fit" data-tip="{{ $comment->created_at }}">
-                    <p class="text-neutral-content">{{ $comment->created_at->diffForHumans() }}</p>
-                </div>
-            </div>
-            @if( $comment->created_at->notEqualTo( $comment->updated_at))
-                <div class="basis-1/2 text-right">
-                    <div class="tooltip w-fit" data-tip="{{ $comment->updated_at }}">
-                        <p class="text-neutral-content">Edited</p>
+        <div class="card bg-base-200 shadow-xl min-h-full mb-2">
+            <div class="card-body ">
+            <p>{{ $comment->body }}</p>
+            <div class="flex flex-row">
+                <div class="basis-1/2">
+                    <div class="tooltip w-fit" data-tip="{{ $comment->created_at }}">
+                        <p class="text-neutral-content">{{ $comment->created_at->diffForHumans() }}</p>
                     </div>
                 </div>
-            @endif
+                @if( $comment->created_at->notEqualTo( $comment->updated_at))
+                    <div class="basis-1/2 text-right">
+                        <div class="tooltip w-fit" data-tip="{{ $comment->updated_at }}">
+                            <p class="text-neutral-content">Edited</p>
+                        </div>
+                    </div>
+                @endif
+            </div>
+            <p class="text-neutral-content">{{ $comment->user->name }}</p>
+            </div>
         </div>
-        <p class="text-neutral-content">{{ $comment->user->name }}</p>
-        </div>
-    </div>
-@endforeach
+    @endforeach
 @endsection

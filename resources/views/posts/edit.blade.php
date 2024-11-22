@@ -5,6 +5,7 @@
         <form method="POST" action="{{ route('posts.update', ['post' => $post]) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
+
             <label class="form-control w-full">
                 <div class="label">
                     <span class="label-text">Title</span>
@@ -16,6 +17,7 @@
                     @enderror
                 </div>
             </label>
+
             <label class="form-control w-full">
                 <div class="label">
                     <span class="label-text">Content</span>
